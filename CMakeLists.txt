@@ -20,7 +20,8 @@ message(STATUS " ${PROC}")
 message(STATUS "-------------------------------------")
 
 add_library(${PROJECT_NAME}
-    src/squaternion.cpp
+    src/quaternion.cpp
+    src/quaternion_filters.cpp
 )
 target_include_directories(${PROJECT_NAME}
     PUBLIC
