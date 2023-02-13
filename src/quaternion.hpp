@@ -182,9 +182,9 @@ static Quaternion operator*(data_t scalar, const Quaternion &q) {
     return Quaternion(q.w * scalar, q.x * scalar, q.y * scalar, q.z * scalar);
 }
 
-#ifndef ARDUINO
-// won't use ostream on Arduino
-std::ostream &operator<<(std::ostream &os, const Quaternion &q) {
-    return os << q.to_str();
-}
-#endif
+// #ifndef ARDUINO
+// // won't use ostream on Arduino
+// std::ostream &operator<<(std::ostream &os, const Quaternion &q) {
+//     return os << q.to_str();
+// }
+// #endif
