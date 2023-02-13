@@ -2,7 +2,7 @@ list(APPEND ex
     simple.cpp
 )
 
-message(STATUS "Examples ----------------------")
+# message(STATUS "Examples ----------------------")
 foreach(src ${ex})
     get_filename_component(name ${src} NAME_WE)
     # message(STATUS " -> ${name}")

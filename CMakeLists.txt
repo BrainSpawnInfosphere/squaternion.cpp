@@ -39,11 +39,13 @@ target_include_directories(${PROJECT_NAME}
 )
 
 # Examples -----------------------------------------------------------
+message(STATUS "Building ${PROJECT_NAME} examples is ${BUILD_EXAMPLES}")
 if(BUILD_EXAMPLES)
     add_subdirectory(examples)
 endif()
 
 # Tests --------------------------------------------------------------
+message(STATUS "Building ${PROJECT_NAME} gtests is ${BUILD_GTESTS}")
 if(BUILD_GTESTS)
-    # add_subdirectory(gtests)
+    add_subdirectory(gtests)
 endif()
