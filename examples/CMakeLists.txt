@@ -5,7 +5,7 @@ list(APPEND ex
 message(STATUS "Examples ----------------------")
 foreach(src ${ex})
     get_filename_component(name ${src} NAME_WE)
-    message(STATUS " -> ${name}")
+    # message(STATUS " -> ${name}")
     add_executable(${name} ${src})
     target_link_libraries(${name} squaternion)
     target_include_directories(${name} PUBLIC ../src)
