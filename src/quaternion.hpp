@@ -33,25 +33,26 @@ struct Quaternion {
 
     double magnitude() const { return sqrt(w * w + x * x + y * y + z * z); }
 
-    int normalize() {
-        data_t m = sqrt(w * w + x * x + y * y + z * z);
+    int normalize() ;
+    // {
+    //     data_t m = sqrt(w * w + x * x + y * y + z * z);
 
-        if (m < 1.0e-6) {
-            return 1;
-        }
+    //     if (m < 1.0e-6) {
+    //         return 1;
+    //     }
 
-        // use isinf(inv_m) instead?
-        // the above test will capture really large inv_m
-        // in addition to infinate
-        data_t inv_m = 1.0 / m;
+    //     // use isinf(inv_m) instead?
+    //     // the above test will capture really large inv_m
+    //     // in addition to infinate
+    //     data_t inv_m = 1.0 / m;
 
-        this->w *= inv_m;
-        this->x *= inv_m;
-        this->y *= inv_m;
-        this->z *= inv_m;
+    //     this->w *= inv_m;
+    //     this->x *= inv_m;
+    //     this->y *= inv_m;
+    //     this->z *= inv_m;
 
-        return 0;
-    }
+    //     return 0;
+    // }
 
     // Returns Quaternion(w,-x,-y,-z)
     Quaternion conjugate() const { return Quaternion(w, -x, -y, -z); }
