@@ -20,7 +20,7 @@ overall state of a system.
  */
 class QCF {
 public:
-  QCF(data_t a = 0.02); // : alpha(a) {}
+  QCF(data_t a = 0.02): alpha(a) {}
 
   Quaternion update(data_t ax, data_t ay, data_t az, data_t wx, data_t wy,
                     data_t wz, data_t dt)
