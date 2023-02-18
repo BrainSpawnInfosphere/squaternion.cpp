@@ -5,6 +5,5 @@
 \**************************************/
 #pragma once
 
-
 #include "quaternion.hpp"
 #include "quaternion_filters.hpp"

@@ -24,9 +24,12 @@ cmake ..
 build
 ```
 
-## CPM
+## Todo
 
-Todo
+- [ ] Make a CPM
+- [x] Should I make this header only? It is pretty simple
+- [ ] Add `gtest` tests like `python` version
+- [x] Add a simple Arduino compile test
 
 # MIT License
 

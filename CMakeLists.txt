@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-PROJECT(squaternion VERSION "2022.08.20")
+PROJECT(squaternion VERSION "2023.02.18")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -30,13 +30,15 @@ else()
 endif()
 
 add_library(${PROJECT_NAME}
-    src/quaternion.cpp
-    src/quaternion_filters.cpp
+    INTERFACE
+    # src/quaternion.cpp
+    # src/quaternion_filters.cpp
 )
-target_include_directories(${PROJECT_NAME}
-    PUBLIC
-        src/
-)
+target_include_directories(${PROJECT_NAME} INTERFACE src/)
+# target_include_directories(${PROJECT_NAME}
+#     INTERFACE
+#         src/
+# )
 
 # Examples -----------------------------------------------------------
 message(STATUS "Building ${PROJECT_NAME} examples is ${BUILD_EXAMPLES}")
