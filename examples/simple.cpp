@@ -4,9 +4,9 @@
 
 using namespace std;
 
-std::ostream &operator<<(std::ostream &os, const Quaternion &q) {
-    return os << q.to_str();
-}
+// std::ostream &operator<<(std::ostream &os, const Quaternion &q) {
+//     return os << q.to_str();
+// }
 
 int main() {
     Quaternion q(1, 2, 3, 4);

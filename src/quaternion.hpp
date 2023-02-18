@@ -6,12 +6,13 @@
 #pragma once
 
 #ifdef ARDUINO
-#include <Arduino.h>
-#define data_t float
+  #include <Arduino.h>
+  #define data_t float
 #else
-#include <cmath>
-#include <string>
-#define data_t double
+  #include <cmath>
+  #include <string>
+  #include <ostream>
+  #define data_t double
 #endif
 
 constexpr data_t deg2rad = M_PI / 180.0;
@@ -182,9 +183,9 @@ static Quaternion operator*(data_t scalar, const Quaternion &q) {
   return Quaternion(q.w * scalar, q.x * scalar, q.y * scalar, q.z * scalar);
 }
 
-// #ifndef ARDUINO
-// // won't use ostream on Arduino
-// std::ostream &operator<<(std::ostream &os, const Quaternion &q) {
-//     return os << q.to_str();
-// }
-// #endif
+#ifndef ARDUINO
+// won't use ostream on Arduino
+static std::ostream &operator<<(std::ostream &os, const Quaternion &q) {
+    return os << q.to_str();
+}
+#endif
