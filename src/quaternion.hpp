@@ -10,8 +10,8 @@
   #define data_t float
 #else
   #include <cmath>
-  #include <string>
   #include <ostream>
+  #include <string>
   #define data_t double
 #endif
 
@@ -33,25 +33,24 @@ struct Quaternion {
 
   double magnitude() const { return sqrt(w * w + x * x + y * y + z * z); }
 
-  int normalize()
-  {
-      data_t m = sqrt(w * w + x * x + y * y + z * z);
+  int normalize() {
+    data_t m = sqrt(w * w + x * x + y * y + z * z);
 
-      if (m < 1.0e-6) {
-          return 1;
-      }
+    if (m < 1.0e-6) {
+      return 1;
+    }
 
-      // use isinf(inv_m) instead?
-      // the above test will capture really large inv_m
-      // in addition to infinate
-      data_t inv_m = 1.0 / m;
+    // use isinf(inv_m) instead?
+    // the above test will capture really large inv_m
+    // in addition to infinate
+    data_t inv_m = 1.0 / m;
 
-      this->w *= inv_m;
-      this->x *= inv_m;
-      this->y *= inv_m;
-      this->z *= inv_m;
+    this->w *= inv_m;
+    this->x *= inv_m;
+    this->y *= inv_m;
+    this->z *= inv_m;
 
-      return 0;
+    return 0;
   }
 
   // Returns Quaternion(w,-x,-y,-z)
@@ -65,21 +64,19 @@ struct Quaternion {
 
     data_t ysqr = y * y;
 
-    data_t t0 = +2.0 * (w * x + y * z);
-    data_t t1 = +1.0 - 2.0 * (x * x + ysqr);
-    *roll = atan2(t0, t1);
+    data_t t0   = +2.0 * (w * x + y * z);
+    data_t t1   = +1.0 - 2.0 * (x * x + ysqr);
+    *roll       = atan2(t0, t1);
 
-    data_t t2 = +2.0 * (w * y - z * x);
+    data_t t2   = +2.0 * (w * y - z * x);
 
-    if (t2 > 1.0)
-      t2 = 1.0;
-    else if (t2 < -1.0)
-      t2 = -1.0;
-    *pitch = asin(t2);
+    if (t2 > 1.0) t2 = 1.0;
+    else if (t2 < -1.0) t2 = -1.0;
+    *pitch    = asin(t2);
 
     data_t t3 = +2.0 * (w * z + x * y);
     data_t t4 = +1.0 - 2.0 * (ysqr + z * z);
-    *yaw = atan2(t3, t4);
+    *yaw      = atan2(t3, t4);
 
     if (degrees) {
       *roll *= rad2deg;
@@ -108,10 +105,10 @@ struct Quaternion {
     data_t cp = cos(pitch * 0.5);
     data_t sp = sin(pitch * 0.5);
 
-    data_t w = cy * cr * cp + sy * sr * sp;
-    data_t x = cy * sr * cp - sy * cr * sp;
-    data_t y = cy * cr * sp + sy * sr * cp;
-    data_t z = sy * cr * cp - cy * sr * sp;
+    data_t w  = cy * cr * cp + sy * sr * sp;
+    data_t x  = cy * sr * cp - sy * cr * sp;
+    data_t y  = cy * cr * sp + sy * sr * cp;
+    data_t z  = sy * cr * cp - cy * sr * sp;
 
     return Quaternion(w, x, y, z);
   }
@@ -170,9 +167,9 @@ struct Quaternion {
     Quaternion qq = conjugate();
     Quaternion v(0.0, vec[0], vec[1], vec[2]);
     Quaternion ans = *this * v * qq;
-    vec[0] = ans.x;
-    vec[1] = ans.y;
-    vec[2] = ans.z;
+    vec[0]         = ans.x;
+    vec[1]         = ans.y;
+    vec[2]         = ans.z;
   }
 
   double w, x, y, z;
@@ -186,6 +183,6 @@ static Quaternion operator*(data_t scalar, const Quaternion &q) {
 #ifndef ARDUINO
 // won't use ostream on Arduino
 static std::ostream &operator<<(std::ostream &os, const Quaternion &q) {
-    return os << q.to_str();
+  return os << q.to_str();
 }
 #endif
